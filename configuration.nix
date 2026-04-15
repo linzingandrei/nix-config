@@ -161,7 +161,7 @@ in
         };
 
         kernelPatches = [
-          { name = "clear-patches.patch"; patch = self + /patches/0002-clear-patches.patch; }
+          { name = "clear-patches.patch"; patch = ./patches/0002-clear-patches.patch; }
 
           { name = "glitched-base.patch"; patch = self + /patches/0003-glitched-base.patch; }
           { name = "glitched-cfs.patch"; patch = self + /patches/0003-glitched-cfs.patch; }
