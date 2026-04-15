@@ -157,22 +157,22 @@ in
             # url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.11.tar.xz";
             # sha256 = "sha256-IAOde2slbAi+L4+sQ8P/mmIDCMcDxkPPL4DDkQub1Zs=";
             url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.12.tar.xz";
-            sha256 = "sha256-u39tgLOHx1e30Uu5MCj8uQ95PFwNNnc27oFaEAs4kfA=";
+            sha256 = "sha256-zlxPEgX5cpKGtWmwN2SVkVVfMcoeA8xQS9O3C45YqNU=";
         };
 
         kernelPatches = [
-          { name = "clear-patches.patch"; patch = ./patches/0002-clear-patches.patch; }
+          { name = "clear-patches.patch"; patch = self + /patches/0002-clear-patches.patch; }
 
-          { name = "glitched-base.patch"; patch = ./patches/0003-glitched-base.patch; }
-          { name = "glitched-cfs.patch"; patch = ./patches/0003-glitched-cfs.patch; }
-          { name = "glitched-eevdf-additions.patch"; patch = ./patches/0003-glitched-eevdf-additions.patch; }
+          { name = "glitched-base.patch"; patch = self + /patches/0003-glitched-base.patch; }
+          { name = "glitched-cfs.patch"; patch = self + /patches/0003-glitched-cfs.patch; }
+          { name = "glitched-eevdf-additions.patch"; patch = self + /patches/0003-glitched-eevdf-additions.patch; }
 
-          { name = "prjc.patch"; patch = ./patches/0009-prjc.patch; }
+          { name = "prjc.patch"; patch = self + /patches/0009-prjc.patch; }
 
-          { name = "misc-additions.patch"; patch = ./patches/0012-misc-additions.patch; }
+          { name = "misc-additions.patch"; patch = self + /patches/0012-misc-additions.patch; }
         ];
 
-        extraConfigFromFile = ./tkg-config-and-patches/config.x86_64;
+        extraConfigFromFile = self + tkg-config-and-patches/config.x86_64;
         # extraConfig = ''
         # CONFIG_BPF y
         # CONFIG_BPF_SYSCALL y
