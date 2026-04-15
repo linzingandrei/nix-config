@@ -5,9 +5,7 @@
 { config, pkgs, inputs, self, ... }:
 
 let
-  legionModule = pkgs.callPackages ./lenovo-legion-module.nix {
-    kernel = config.boot.kernelPackages.kernel;
-  };
+  legionModule = config.boot.kernelPackages.callPackage ./lenovo-legion-module.nix {};
 in
 {
   imports =
@@ -331,8 +329,9 @@ in
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  boot.extraModulePackages = with config.boot.kernelPackages;
-    [ legionModule ];
+  # boot.extraModulePackages = with config.boot.kernelPackages;
+  #  [ legionModule ];
+  boot.extraModulePackages = [ legionModule ];
   
   boot.initrd.kernelModules = [
     # "vfio_pci"

@@ -6,7 +6,7 @@
 
   };
 
-  outputs = { nixpkgs, auto-cpufreq, ... } @ inputs:
+  outputs = { nixpkgs, ... } @ inputs:
   {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = {
