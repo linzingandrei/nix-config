@@ -4,6 +4,11 @@
 
 { config, pkgs, inputs, self, ... }:
 
+let
+  legionModule = pkgs.callPackages ./lenovo-legion-module.nix {
+    kernel = config.boot.kernelPackages.kernel;
+  };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -222,7 +227,7 @@
     #   background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/contents/images/2560x1600.jpg
     # '')
     lutris
-    # lenovo-legion
+    lenovo-legion
     # linuxKernel.packages.linux_6_19.lenovo-legion-module
     lm_sensors
     # waybar
@@ -320,30 +325,14 @@
     enable = false;
   };
 
-  programs.auto-cpufreq.enable = true;
-  programs.auto-cpufreq.settings = {
-    charger = {
-      governor = "performance";
-      energy_performance_preference = "performance";
-      turbo = "auto";
-    };
-
-    battery = {
-      governor = "powersave";
-      energy_performance_preference = "power";
-      turbo = "auto";
-
-      ideapad_laptop_conservation_mode = true
-    };
-  };
   # services.tuned.enable = true;
-  # services.power-profiles-daemon.enable = true;
+  services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  #boot.extraModulePackages = with config.boot.kernelPackages;
-  #  [ lenovo-legion-module ];
+  boot.extraModulePackages = with config.boot.kernelPackages;
+    [ legionModule ];
   
   boot.initrd.kernelModules = [
     # "vfio_pci"

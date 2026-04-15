@@ -4,10 +4,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { nixpkgs, auto-cpufreq, ... } @ inputs:
@@ -18,7 +14,6 @@
       };
       modules = [
         ./configuration.nix
-        auto-cpufreq.nixosModules.default
       ];
     };
   };
