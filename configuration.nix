@@ -161,18 +161,18 @@ in
         };
 
         kernelPatches = [
-          { name = "clear-patches.patch"; patch = ./patches/0002-clear-patches.patch; }
+          { name = "clear-patches.patch"; patch = ./tkg-config-and-patches/0002-clear-patches.patch; }
 
-          { name = "glitched-base.patch"; patch = self + /patches/0003-glitched-base.patch; }
-          { name = "glitched-cfs.patch"; patch = self + /patches/0003-glitched-cfs.patch; }
-          { name = "glitched-eevdf-additions.patch"; patch = self + /patches/0003-glitched-eevdf-additions.patch; }
+          { name = "glitched-base.patch"; patch = ./tkg-config-and-patches/0003-glitched-base.patch; }
+          { name = "glitched-cfs.patch"; patch = ./tkg-config-and-patches/0003-glitched-cfs.patch; }
+          { name = "glitched-eevdf-additions.patch"; patch = ./tkg-config-and-patches/0003-glitched-eevdf-additions.patch; }
 
-          { name = "prjc.patch"; patch = self + /patches/0009-prjc.patch; }
+          { name = "prjc.patch"; patch = ./tkg-config-and-patches/0009-prjc.patch; }
 
-          { name = "misc-additions.patch"; patch = self + /patches/0012-misc-additions.patch; }
+          { name = "misc-additions.patch"; patch = ./tkg-config-and-patches/0012-misc-additions.patch; }
         ];
 
-        extraConfigFromFile = self + tkg-config-and-patches/config.x86_64;
+        extraConfigFromFile = ./tkg-config-and-patches/config.x86_64;
         # extraConfig = ''
         # CONFIG_BPF y
         # CONFIG_BPF_SYSCALL y
