@@ -321,8 +321,24 @@
   };
 
   programs.auto-cpufreq.enable = true;
+  programs.auto-cpufreq.settings = {
+    charger = {
+      governor = "performance";
+      energy_performance_preference = "performance";
+      turbo = "auto";
+    };
+
+    battery = {
+      governor = "powersave";
+      turbo = "auto";
+
+      enable_thresholds = true;
+      start_threshold = 20;
+      stop_threshold = 60;
+    };
+  };
   # services.tuned.enable = true;
-  services.power-profiles-daemon.enable = true;
+  # services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
 
   systemd.services.NetworkManager-wait-online.enable = false;
