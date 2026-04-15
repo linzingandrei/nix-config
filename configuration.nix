@@ -4,11 +4,6 @@
 
 { config, pkgs, inputs, self, ... }:
 
-let
-  lenovo-legion-module = pkgs.callPackage "${self}/pkgs/lenovo-legion-module.nix" {
-    lenovo-legion = pkgs.lenovo-legion;
-  };
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -227,7 +222,7 @@ in
     #   background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/contents/images/2560x1600.jpg
     # '')
     lutris
-    lenovo-legion
+    # lenovo-legion
     # linuxKernel.packages.linux_6_19.lenovo-legion-module
     lm_sensors
     # waybar
@@ -325,15 +320,15 @@ in
     enable = false;
   };
 
-
+  programs.auto-cpufreq.enable = true;
   # services.tuned.enable = true;
   services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
-  boot.extraModulePackages = with config.boot.kernelPackages;
-    [ lenovo-legion-module ];
+  #boot.extraModulePackages = with config.boot.kernelPackages;
+  #  [ lenovo-legion-module ];
   
   boot.initrd.kernelModules = [
     # "vfio_pci"
