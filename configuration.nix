@@ -2,8 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, self, ... }:
 
+let
+  lenovo-legion-module = pkgs.callPackage "${self}/pkgs/lenovo-legion-module.nix" {
+    lenovo-legion = pkgs.lenovo-legion;
+  };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -113,12 +118,12 @@
   };
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    version = "595.45.04";
-    sha256_64bit = "sha256-zUllSSRsuio7dSkcbBTuxF+dN12d6jEPE0WgGvVOj14=";
-    sha256_aarch64 = "sha256-jl6lQWsgF6ya22sAhYPpERJ9r+wjnWzbGnINDpUMzsk=";
-    openSha256 = "sha256-uqNfImwTKhK8gncUdP1TPp0D6Gog4MSeIJMZQiJWDoE=";
-    settingsSha256 = "sha256-Y45pryyM+6ZTJyRaRF3LMKaiIWxB5gF5gGEEcQVr9nA=";
-    persistencedSha256 = "sha256-5FoeUaRRMBIPEWGy4Uo0Aho39KXmjzQsuAD9m/XkNpA=";
+    version = "595.58.03";
+    sha256_64bit = "sha256-jA1Plnt5MsSrVxQnKu6BAzkrCnAskq+lVRdtNiBYKfk=";
+    sha256_aarch64 = "sha256-hzzIKY1Te8QkCBWR+H5k1FB/HK1UgGhai6cl3wEaPT8=";
+    openSha256 = "sha256-6LvJyT0cMXGS290Dh8hd9rc+nYZqBzDIlItOFk8S4n8=";
+    settingsSha256 = "sha256-2vLF5Evl2D6tRQJo0uUyY3tpWqjvJQ0/Rpxan3NOD3c=";
+    persistencedSha256 = "sha256-AtjM/ml/ngZil8DMYNH+P111ohuk9mWw5t4z7CHjPWw=";
   };
 
   hardware.graphics = {
@@ -146,13 +151,15 @@
 
   boot.kernelPackages = let
     linux_bpf_pkg = { fetchurl, buildLinux, ... } @ args:
-      buildLinux (args // rec {
-        version = "6.19.11";
-        modDirVersion = "6.19.11";
+    buildLinux (args // rec {
+        version = "7.0.0";
+        modDirVersion = "7.0.0";
 
         src = fetchurl {
-            url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.11.tar.xz";
-            sha256 = "sha256-IAOde2slbAi+L4+sQ8P/mmIDCMcDxkPPL4DDkQub1Zs=";
+            # url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.11.tar.xz";
+            # sha256 = "sha256-IAOde2slbAi+L4+sQ8P/mmIDCMcDxkPPL4DDkQub1Zs=";
+            url = "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.tar.xz";
+            sha256 = "sha256-u39tgLOHx1e30Uu5MCj8uQ95PFwNNnc27oFaEAs4kfA=";
         };
 
         # kernelPatches = [
@@ -166,35 +173,34 @@
 
         # extraConfigFromFile = /etc/nixos/linux-tkg/linux-tkg-config/6.19/config.x86_64;
         extraConfig = ''
-          CONFIG_BPF y
-          CONFIG_BPF_SYSCALL y
-          # [optional, for tc filters]
-          CONFIG_NET_CLS_BPF m
-          # [optional, for tc actions]
-          CONFIG_NET_ACT_BPF m
-          CONFIG_BPF_JIT y
-          # [for Linux kernel versions 4.7 and later]
-          CONFIG_HAVE_EBPF_JIT y
-          # [optional, for kprobes]
-          CONFIG_BPF_EVENTS y
-          # Need kernel headers through /sys/kernel/kheaders.tar.xz
-          CONFIG_IKHEADERS y
+        CONFIG_BPF y
+        CONFIG_BPF_SYSCALL y
+        # [optional, for tc filters]
+        CONFIG_NET_CLS_BPF m
+        # [optional, for tc actions]
+        CONFIG_NET_ACT_BPF m
+        CONFIG_BPF_JIT y
+        # [for Linux kernel versions 4.7 and later]
+        CONFIG_HAVE_EBPF_JIT y
+        # [optional, for kprobes]
+        CONFIG_BPF_EVENTS y
+        # Need kernel headers through /sys/kernel/kheaders.tar.xz
+        CONFIG_IKHEADERS y
 
-          CONFIG_NET_SCH_SFQ m
-          CONFIG_NET_ACT_POLICE m
-          CONFIG_NET_ACT_GACT m
-          CONFIG_DUMMY m
-          CONFIG_VXLAN m
+        CONFIG_NET_SCH_SFQ m
+        CONFIG_NET_ACT_POLICE m
+        CONFIG_NET_ACT_GACT m
+        CONFIG_DUMMY m
+        CONFIG_VXLAN m
         '';
 
         ignoreConfigErrors = true;
 
-        extraMeta.branch = "6.19.11";
+        extraMeta.branch = "7.0.0";
   } // (args.argsOverride or {}));
     linux_bpf = pkgs.callPackage linux_bpf_pkg{};
   in
     pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_bpf);
-
 
 # # programs.hyprland = {
 ##  enable = true;
@@ -222,7 +228,7 @@
     # '')
     lutris
     lenovo-legion
-    linuxKernel.packages.linux_6_19.lenovo-legion-module
+    # linuxKernel.packages.linux_6_19.lenovo-legion-module
     lm_sensors
     # waybar
     # mako

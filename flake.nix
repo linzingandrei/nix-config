@@ -5,10 +5,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, ... } @ inputs:
+  outputs = { self, nixpkgs, ... } @ inputs:
   {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
+      specialArgs = {
+        inherit inputs self;
+      };
       modules = [
         ./configuration.nix
       ];
