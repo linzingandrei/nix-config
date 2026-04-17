@@ -21,6 +21,7 @@ in
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.default
       ./vm.nix
+      ./power-management.nix
     ];
 
   home-manager.useUserPackages = true;
@@ -212,7 +213,7 @@ in
     hyprpaper
     zellij
     pywal
-    powertop
+    # powertop
     lm_sensors 
     killall
     devenv
