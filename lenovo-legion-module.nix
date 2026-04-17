@@ -2,7 +2,7 @@
   lib,
   stdenv,
   kernel,
-  kernelModuleMakeFlags,
+  kernelModuleMakeFlags ? [],
   bash,
   legionApp,
 }:
