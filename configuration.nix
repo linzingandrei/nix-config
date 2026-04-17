@@ -7,10 +7,13 @@
 let
   kernelPackages = import ./kernel.nix { inherit pkgs; };
 
-  legionModule = pkgs.callPackage ./lenovo-legion-module.nix {
-    kernel = config.boot.kernelPackages.kernel;
-    legionApp = pkgs.callPackage ./lenovo-legion-app.nix {};
-  };
+  # legionModule = pkgs.callPackage ./lenovo-legion-module.nix {
+  #  kernel = config.boot.kernelPackages.kernel;
+  #  legionApp = pkgs.callPackage ./lenovo-legion-app.nix {
+  #    qtbase = pkgs.kdePackages.qtbase;
+  #    wrapQtAppsHook = pkgs.qt6.wrapQtAppsHook;
+  #  };
+  # };
 in
 {
   imports =
@@ -293,9 +296,9 @@ in
   # boot.extraModulePackages = with config.boot.kernelPackages;
   #  [ legionModule ];
   # boot.extraModulePackages = [ legionModule ];
-  boot.extraModulePackages = [
-    legionModule
-  ];
+  # boot.extraModulePackages = [
+  #  legionModule
+  #];
 
   boot.initrd.kernelModules = [
     # "vfio_pci"
@@ -314,7 +317,7 @@ in
 
   boot = {
     kernelModules = [ 
-      "legion-laptop"
+      # "legion-laptop"
       "ntsync"
       "kheaders"
     ];
