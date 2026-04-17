@@ -5,7 +5,7 @@
   wrapQtAppsHook,
   python3,
   nix-update-script,
-  kdePackages.qtbase
+  qtbase,
 }:
 
 python3.pkgs.buildPythonApplication rec {

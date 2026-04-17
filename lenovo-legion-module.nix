@@ -4,14 +4,14 @@
   kernel,
   kernelModuleMakeFlags,
   bash,
-  lenovo-legion,
+  legionApp,
 }:
 
 stdenv.mkDerivation {
   pname = "lenovo-legion-module";
-  inherit (lenovo-legion) version src;
+  inherit (legionApp) version src;
 
-  sourceRoot = "${lenovo-legion.src.name}/kernel_module";
+  sourceRoot = "${legionApp.src.name}/kernel_module";
 
   hardeningDisable = [ "pic" ];
 

@@ -5,8 +5,11 @@
 { config, pkgs, inputs, self, ... }:
 
 let
-  legionModule = config.boot.kernelPackages.callPackage ./lenovo-legion-module.nix {};
-  legionApp = pkgs.callPackage ./lenovo-legion-app.nix { };
+  legionModule = config.boot.kernelPackages.callPackage ./lenovo-legion-module.nix { };
+  legionApp = pkgs.callPackage ./lenovo-legion-app.nix {
+    qtbase = pkgs.kdePackages.qtbase;
+    wrapQtAppsHook = pkgs.qt6.wrapQtAppsHook;
+  };
 in
 {
   imports =
