@@ -288,7 +288,7 @@ in
   };
 
   # services.tuned.enable = true;
-  services.power-profiles-daemon.enable = true;
+  # services.power-profiles-daemon.enable = true;
   services.upower.enable = true;
 
   systemd.services.NetworkManager-wait-online.enable = false;
