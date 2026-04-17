@@ -332,7 +332,7 @@ in
       # "amd_iommu=on"
       # "vfio-pci.ids=10de:2560,10de:228e"
 
-      # "usbcore.autosuspend=-1"
+      "usbcore.autosuspend=300"
       # "amdgpu.dcdebugmask=0x400"
       # "amdgpu.sg_display=0"
 
