@@ -32,10 +32,9 @@ stdenv.mkDerivation {
 
   meta = {
     description = "Linux kernel module for controlling fan and power in Lenovo Legion laptops";
-    homepage = "https://github.com/johnfanv2/LenovoLegionLinux";
+    homepage = "https://github.com/linzingandrei/LenovoLegionLinux";
     license = lib.licenses.gpl2Only;
     platforms = [ "x86_64-linux" ];
-    maintainers = [ lib.maintainers.ulrikstrid ];
     broken = kernel.kernelOlder "5.15";
   };
 }
