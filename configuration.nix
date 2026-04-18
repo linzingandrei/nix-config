@@ -22,7 +22,6 @@ in
       inputs.home-manager.nixosModules.default
       ./vm.nix
       ./power-management.nix
-      ./network-stuff.nix
     ];
 
   home-manager.useUserPackages = true;
