@@ -1,0 +1,43 @@
+--- a/ebpf_prog/Makefile
++++ b/ebpf_prog/Makefile
+@@ -3,9 +3,10 @@
+ # On Debian based distros we need the following 2 directories.
+ # Otherwise, just use the kernel headers from the kernel sources.
+ #
+-KERNEL_VER ?= $(shell ls -d /lib/modules/*/source | sort | tail -1 | cut -d/ -f4)
+-KERNEL_DIR ?= /lib/modules/$(KERNEL_VER)/source
++KERNEL_VER ?= $(shell ls -d /lib/modules/*/build | sort | tail -1 | cut -d/ -f4)
++KERNEL_DIR ?= /lib/modules/$(KERNEL_VER)/build
+ KERNEL_HEADERS ?= /usr/src/linux-headers-$(KERNEL_VER)/
++KERNEL_6_19_CHECK = $(shell expr "$(KERNEL_VER)" \>= "6.19")
+ CC = clang
+ LLC ?= llc
+ ARCH ?= $(shell uname -m)
+@@ -32,12 +33,16 @@
+ 
+ ifeq ($(ARCH),arm)
+ 	# on previous archs, it fails with "SMP not supported on pre-ARMv6"
+-	EXTRA_FLAGS = "-D__LINUX_ARM_ARCH__=7"
++   EXTRA_FLAGS = -D__LINUX_ARM_ARCH__=7
++endif
++ifeq ($(KERNEL_6_19_CHECK),1)
++       EXTRA_FLAGS += -Wno-microsoft-anon-tag -fms-extensions
+ endif
+ 
+ SRC := $(wildcard *.c)
+ BIN := $(SRC:.c=.o)
+ CFLAGS = -I. \
++	-I$(KERNEL_HEADERS)/arch/$(ARCH)/include/ \
+ 	-I$(KERNEL_HEADERS)/arch/$(ARCH)/include/generated/ \
+ 	-I$(KERNEL_HEADERS)/include \
+ 	-include $(KERNEL_DIR)/include/linux/kconfig.h \
+@@ -57,7 +62,8 @@
+ 	-Wno-gnu-variable-sized-type-not-at-end \
+ 	-Wno-address-of-packed-member \
+ 	-Wno-tautological-compare \
+-	-Wno-unknown-warning-option  \
++	-Wno-unknown-warning-option \
++	-fcf-protection \
+ 	-fno-stack-protector \
+ 	-g -O2 -emit-llvm
+ 
