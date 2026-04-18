@@ -1,11 +1,12 @@
 { config, ... }:
 
 {
-  services = {
-    powerManagement.powertop.enable = true;
+  powerManagement.powertop.enable = true;
 
-    services.system76-scheduler.settings.cfsProfiles.enable = true;
-    services.power-profiles-daemon.enable = false;
+  services = {
+    system76-scheduler.settings.cfsProfiles.enable = true;
+
+    power-profiles-daemon.enable = false;
 
     tlp = {
       enable = true;
@@ -28,5 +29,5 @@
         STOP_CHARGE_THRESH_BAT0=1;
       };
     };
-  }
+  };
 }
