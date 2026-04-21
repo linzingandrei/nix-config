@@ -358,8 +358,8 @@ in
   programs.gamemode.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = false;
-  services.desktopManager.plasma6.enable = false;
+  # services.displayManager.sddm.enable = false;
+  # services.desktopManager.plasma6.enable = false;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -405,7 +405,7 @@ in
   users.users.andrei = {
     isNormalUser = true;
     description = "andrei";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       kdePackages.kate
