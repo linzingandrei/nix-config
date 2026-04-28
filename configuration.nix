@@ -259,6 +259,7 @@ in
     fzf
     dragon-drop
     htop
+    freerdp
   ];
 
   programs.niri = {
