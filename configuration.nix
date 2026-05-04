@@ -23,7 +23,7 @@ in
       ./vm.nix
       ./power-management.nix
 
-      ./network-stuff.nix
+      # ./network-stuff.nix
     ];
 
   home-manager.useUserPackages = true;
@@ -410,7 +410,7 @@ in
   users.users.andrei = {
     isNormalUser = true;
     description = "andrei";
-    extraGroups = [ "networkmanager" "wheel" "docker" "wireshark" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       kdePackages.kate
