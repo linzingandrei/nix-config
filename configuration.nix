@@ -179,6 +179,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+
     mangohud
     protonup-ng
     brave
@@ -189,7 +190,7 @@ in
     #   [General]
     #   background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/contents/images/2560x1600.jpg
     # '')
-    lutris
+    # lutris
     # lenovo-legion
     # linuxKernel.packages.linux_6_19.lenovo-legion-module
     lm_sensors
@@ -222,7 +223,7 @@ in
     virt-v2v
     bibata-cursors
     direnv
-    # emacs
+    emacs
     git
     ripgrep
     coreutils
@@ -260,6 +261,9 @@ in
     dragon-drop
     htop
     freerdp
+    zed-editor-fhs
+    nodejs_25
+    ghidra
   ];
 
   programs.niri = {
@@ -440,9 +444,15 @@ in
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  # networking.firewall = {
+  #  allowPing = true;
+
+  #  checkReversePath = "loose";
+  #};
+
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ 25565 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  # networking.firewall.allowedTCPPorts = [ 26760 ];
+  # networking.firewall.allowedUDPPorts = [ 26760 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   # networking.extraHosts = ''

@@ -3,14 +3,14 @@
 let
   linux_bpf_pkg = { fetchurl, buildLinux, ... } @ args:
     buildLinux (args // rec {
-      version = "7.0.0";
+      version = "7.0.3";
       modDirVersion = version;
 
       src = fetchurl {
         # url = "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.11.tar.xz";
         # sha256 = "sha256-IAOde2slbAi+L4+sQ8P/mmIDCMcDxkPPL4DDkQub1Zs=";
-        url = "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.tar.xz";
-        sha256 = "sha256-u39tgLOHx1e30Uu5MCj8uQ95PFwNNnc27oFaEAs4kfA=";
+        url = "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.3.tar.xz";
+        sha256 = "sha256-C+2tv1eIaT3eu8yRPIk/Gpc0mved3ecUTCqAtAGVnxw=";
       };
 
     # kernelPatches = [
@@ -50,7 +50,7 @@ let
 
       ignoreConfigErrors = true;
 
-      extraMeta.branch = "7.0.0";
+      extraMeta.branch = "7.0.3";
     } // (args.argsOverride or {}));
   linux_bpf = pkgs.callPackage linux_bpf_pkg{};
 in
