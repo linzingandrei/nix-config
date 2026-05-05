@@ -54,4 +54,4 @@ let
     } // (args.argsOverride or {}));
   linux_bpf = pkgs.callPackage linux_bpf_pkg{};
 in
-  pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_bpf);
+  pkgs.recurseIntoAttrs (pkgs.linuxPackagesFor linux_bpf)
