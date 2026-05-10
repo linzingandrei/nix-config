@@ -109,7 +109,7 @@ in
 
   virtualisation.vmware.host.enable = true;
   virtualisation.vmware.host.package = pkgs.vmware-workstation.overrideAttrs (_: {
-    src = ./files/VMware-Workstation-Full-17.6.4-24832109.x86_64.bundle;
+    src = /nix/store/w5p12azw2dss4xh5g6c7byx8wmpl9dpm-VMware-Workstation-Full-25H2u1-25219725.x86_64.bundle;
   });
 
   virtualisation.waydroid = {
