@@ -12,17 +12,17 @@ let
       };
 
       kernelPatches = [
-        { name = "bore.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/0001-bore.patch; }
+        { name = "bore.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/patchwork/last-successful-check/0001-bore.patch; }
 
-        { name = "clear-patches.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/0002-clear-patches.patch; }
+        { name = "clear-patches.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/patchwork/last-successful-check/0002-clear-patches.patch; }
 
-        { name = "glitched-base.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/0003-glitched-base.patch; }
-        { name = "glitched-cfs.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/0003-glitched-cfs.patch; }
-        { name = "glitched-eevdf-additions.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/0003-glitched-eevdf-additions.patch; }
+        { name = "glitched-base.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/patchwork/last-successful-check/0003-glitched-base.patch; }
+        { name = "glitched-cfs.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/patchwork/last-successful-check/0003-glitched-cfs.patch; }
+        { name = "glitched-eevdf-additions.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/patchwork/last-successful-check/0003-glitched-eevdf-additions.patch; }
 
-        { name = "prjc.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/0009-prjc.patch; }
+        { name = "prjc.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/patchwork/last-successful-check/0009-prjc.patch; }
 
-        { name = "misc-additions.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/0012-misc-additions.patch; }
+        { name = "misc-additions.patch"; patch = ./linux-tkg/linux-tkg-patches/7.0/patchwork/last-successful-check/0012-misc-additions.patch; }
       ];
 
       extraConfigFromFile = ./linux-tkg/linux-tkg-config/7.0/config.x86_64;
