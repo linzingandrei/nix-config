@@ -8,7 +8,7 @@ let
 
       src = fetchurl {
         url = "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.5.tar.xz";
-        sha256 = "sha256-C+2tv1eIaT3eu8yRPIk/Gpc0mved3ecUTCqAtAGVnxw=";
+        sha256 = "sha256-ll+wocFnU5n8YMYGOyJ8BSMEG1+aZitmRi8SEsQ4rDw=";
       };
 
       kernelPatches = [
