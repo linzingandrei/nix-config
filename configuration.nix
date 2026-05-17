@@ -35,9 +35,9 @@ in
   nix.settings.trusted-users = [ "root" "andrei" ];
 
   # fonts.fontconfig.enable = true;
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-  ];
+  # fonts.packages = with pkgs; [
+  #  nerd-fonts.fira-code
+  # ];
 
   services.flatpak.enable = true;
 
@@ -77,24 +77,24 @@ in
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = false;
 
-  services.logind.settings.Login = {
-    HandleLidSwitch = "lock";
-    HandlePowerKey = "ignore";
-    HandleLidSwitchDocked = "lock";
-  };
+  # services.logind.settings.Login = {
+  #  HandleLidSwitch = "lock";
+  #  HandlePowerKey = "ignore";
+  #  HandleLidSwitchDocked = "lock";
+  #};
 
-  services.udisks2.enable = true;
+  # services.udisks2.enable = true;
 
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
-        user = "andrei";
-      };
-      default_session = initial_session;
-    };
-  };
+  # services.greetd = {
+  #   enable = true;
+   # settings = rec {
+   #   initial_session = {
+   #     command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
+   #     user = "andrei";
+   #   };
+   #   default_session = initial_session;
+   # };
+  #};
 
   # environment.loginShellInit = ''
   #   if uwsm check may-start; then
@@ -157,11 +157,11 @@ in
 # boot = {
 #    kernelPackages = pkgs.linuxPackages_xanmod_latest;
 #  };
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-    ];
-  };
+ # programs.nix-ld = {
+ #   enable = true;
+ #   libraries = with pkgs; [
+ #   ];
+ # };
 
   boot.kernelPackages = kernelPackages;
 
@@ -173,10 +173,10 @@ in
 
   # programs.xwayland.enable = true;
 
-  services.emacs = {
-    enable = true;
-    defaultEditor = true;
-  };
+  # services.emacs = {
+  #   enable = true;
+  #   defaultEditor = true;
+  # };
 
   environment.systemPackages = with pkgs; [
 
@@ -186,10 +186,10 @@ in
     btop
     nvtopPackages.full  
     # bottles
-    # (writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
-    #   [General]
-    #   background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/contents/images/2560x1600.jpg
-    # '')
+    (writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+      [General]
+      background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/contents/images/2560x1600.jpg
+    '')
     # lutris
     # lenovo-legion
     # linuxKernel.packages.linux_6_19.lenovo-legion-module
@@ -233,25 +233,25 @@ in
     gimp
     # winboat
     docker-compose
-    # kdePackages.dolphin
-    # kdePackages.qtsvg
-    # kdePackages.kio
-    # kdePackages.kio-fuse
-    # kdePackages.kio-extras
+  #  kdePackages.dolphin
+   # kdePackages.qtsvg
+  #  kdePackages.kio
+   # kdePackages.kio-fuse
+  #  kdePackages.kio-extras
     # alacritty
-    fuzzel
-    swaylock
+  #  fuzzel
+  #  swaylock
     # mako
-    swayidle
-    xwayland-satellite
-    noctalia-shell
-    noctalia-qs
-    adw-gtk3
+  #  swayidle
+  #  xwayland-satellite
+ #   noctalia-shell
+ #   noctalia-qs
+ #   adw-gtk3
     nwg-look
     smem
-    kdePackages.qt6ct
+ #   kdePackages.qt6ct
     seahorse
-    tuigreet
+ #   tuigreet
     openvpn
     lazygit
     horcrux
@@ -264,22 +264,21 @@ in
     zed-editor-fhs
     nodejs_25
     ghidra
+    kdePackages.qtstyleplugin-kvantum
   ];
 
-  programs.niri = {
-    enable = true;
-  };
+  #programs.niri = {
+  #  enable = true;
+  #};
 
-  security.polkit.enable = true; # polkit
-  services.gnome.gnome-keyring.enable = true; # secret service
-  security.pam.services.swaylock = {};
+  #security.polkit.enable = true; # polkit
+  #services.gnome.gnome-keyring.enable = true; # secret service
+  #security.pam.services.swaylock = {};
 
-  security.pam.services = {
-    greetd.enableGnomeKeyring = true;
-    greetd-password.enableGnomeKeyring = true;
-  };
-
-  programs.yazi.enable = true;
+  #security.pam.services = {
+  #  greetd.enableGnomeKeyring = true;
+  #  greetd-password.enableGnomeKeyring = true;
+  #};
 
   services.earlyoom = {
     enable = true;
@@ -340,8 +339,8 @@ in
       # "vfio-pci.ids=10de:2560,10de:228e"
 
       "usbcore.autosuspend=300"
-      # "amdgpu.dcdebugmask=0x400"
-      # "amdgpu.sg_display=0"
+      "amdgpu.dcdebugmask=0x400"
+      "amdgpu.sg_display=0"
 
       # "snd_hda_intel.dmic_detect=0"
       # "snd_hda_intel.enable_msi=1"
@@ -355,16 +354,16 @@ in
     GTK_USE_PORTAL = "1";
   };
 
-  environment.variables = {
-    XCURSOR_THEME = "Bibata-Modern-Classic";
-    XCURSOR_SIZE = "24";
-  };
+ # environment.variables = {
+ #   XCURSOR_THEME = "Bibata-Modern-Classic";
+ #   XCURSOR_SIZE = "24";
+ # };
 
   programs.gamemode.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  # services.displayManager.sddm.enable = false;
-  # services.desktopManager.plasma6.enable = false;
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -451,8 +450,8 @@ in
   #};
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ 26760 ];
-  # networking.firewall.allowedUDPPorts = [ 26760 ];
+  # networking.firewall.allowedTCPPorts = [ 8080 ];
+  # networking.firewall.allowedUDPPorts = [ 8080 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
   # networking.extraHosts = ''

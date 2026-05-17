@@ -8,7 +8,7 @@ let
 
       src = fetchurl {
         url = "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.0.6.tar.xz";
-        sha256 = "sha256-ll+wocFnU5n8YMYGOyJ8BSMEG1+aZitmRi8SEsQ4rDw=";
+        sha256 = "sha256-y6REQKpXr/18ISQdxbwjSw31PEmfj/w+vCkN0zkKdSM=";
       };
 
       kernelPatches = [
