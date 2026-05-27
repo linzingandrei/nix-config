@@ -5,7 +5,7 @@
 { config, pkgs, inputs, self, ... }:
 
 let
-  kernelPackages = import ./kernel.nix { inherit pkgs; };
+  # kernelPackages = import ./kernel.nix { inherit pkgs; };
 
   # legionModule = pkgs.callPackage ./lenovo-legion-module.nix {
   #  kernel = config.boot.kernelPackages.kernel;
@@ -163,7 +163,7 @@ in
  #   ];
  # };
 
-  boot.kernelPackages = kernelPackages;
+  boot.kernelPackages = pkgs.linuxKernel.kernels.linux_xanmod_latest;
 
 # # programs.hyprland = {
 ##  enable = true;
@@ -265,6 +265,7 @@ in
     nodejs_25
     ghidra
     kdePackages.qtstyleplugin-kvantum
+    # ffmpeg
   ];
 
   #programs.niri = {
@@ -418,7 +419,7 @@ in
   };
 
   # Install firefox.
-  # programs.firefox.enable = true;
+  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
