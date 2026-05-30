@@ -163,7 +163,7 @@ in
  #   ];
  # };
 
-  boot.kernelPackages = pkgs.linuxKernel.kernels.linux_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
 # # programs.hyprland = {
 ##  enable = true;
@@ -262,10 +262,13 @@ in
     htop
     freerdp
     zed-editor-fhs
-    nodejs_25
+    nodejs_26
     ghidra
     kdePackages.qtstyleplugin-kvantum
     # ffmpeg
+    solaar
+    lsfg-vk
+    lsfg-vk-ui
   ];
 
   #programs.niri = {
