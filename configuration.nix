@@ -267,9 +267,11 @@ in
     kdePackages.qtstyleplugin-kvantum
     # ffmpeg
     solaar
-    lsfg-vk
-    lsfg-vk-ui
+    # lsfg-vk
+    # lsfg-vk-ui
   ];
+
+  programs.nix-ld.enable = true;
 
   #programs.niri = {
   #  enable = true;
