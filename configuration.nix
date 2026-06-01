@@ -112,10 +112,10 @@ in
     "nvidia"
   ];
 
-  virtualisation.vmware.host.enable = true;
-  virtualisation.vmware.host.package = pkgs.vmware-workstation.overrideAttrs (_: {
-    src = /nix/store/w5p12azw2dss4xh5g6c7byx8wmpl9dpm-VMware-Workstation-Full-25H2u1-25219725.x86_64.bundle;
-  });
+  # virtualisation.vmware.host.enable = true;
+  # virtualisation.vmware.host.package = pkgs.vmware-workstation.overrideAttrs (_: {
+  #   src = /nix/store/w5p12azw2dss4xh5g6c7byx8wmpl9dpm-VMware-Workstation-Full-25H2u1-25219725.x86_64.bundle;
+  # });
 
   virtualisation.waydroid = {
     enable = true;
@@ -143,7 +143,12 @@ in
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [ libva-vdpau-driver ];
+    extraPackages = with pkgs; [
+      libva-vdpau-driver
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
+    ];
   };
 
   hardware.nvidia.prime = {
