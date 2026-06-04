@@ -1,9 +1,21 @@
 { config, pkgs, ... }:
 
 {
+  virtualisation.incus.enable = true;
+  networking.nftables.enable = true;
+
+  networking.firewall.interfaces.incusbr0.allowedTCPPorts = [
+    53
+    67
+  ];
+  networking.firewall.interfaces.incusbr0.allowedUDPPorts = [
+    53
+    67
+  ];
+
   programs.dconf.enable = true;
   
-  users.users.andrei.extraGroups = [ "libvirtd" ];
+  users.users.andrei.extraGroups = [ "libvirtd" "incus-admin" ];
 
   environment.systemPackages = with pkgs; [
     virt-manager
