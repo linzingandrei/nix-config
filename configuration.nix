@@ -279,6 +279,10 @@ in
     solaar
     # lsfg-vk
     # lsfg-vk-ui
+    tesseract
+    (pkgs.kdePackages.spectacle.override {
+      tesseractLanguages = [ "eng" ];
+    })
   ];
 
   programs.nix-ld.enable = true;
