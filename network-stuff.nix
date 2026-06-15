@@ -1,11 +1,17 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.wireshark = {
-    enable = true;
+  # programs.wireshark = {
+  #   enable = true;
 
-    package = pkgs.wireshark;
+  #   package = pkgs.wireshark;
 
-    dumpcap.enable = true;
+  #   dumpcap.enable = true;
+  # };
+
+  services.opensnitch.enable = true;
+
+  home-manager.users.andrei = {
+    services.opensnitch-ui.enable = true;
   };
 }

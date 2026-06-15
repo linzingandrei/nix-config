@@ -23,7 +23,7 @@ in
       ./vm.nix
       ./power-management.nix
 
-      # ./network-stuff.nix
+      ./network-stuff.nix
     ];
 
   home-manager.useUserPackages = true;
