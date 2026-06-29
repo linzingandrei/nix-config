@@ -106,7 +106,7 @@ in
   #     exec uwsm start hyprland-uwsm.desktop
   #   fi
   # '';
-  
+
   services.xserver.videoDrivers = [
     "amdgpu"
     "nvidia"
@@ -132,12 +132,12 @@ in
   };
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    version = "595.71.05";
-    sha256_64bit = "sha256-NiA7iWC35JyKQva6H1hjzeNKBek9KyS3mK8G3YRva4I=";
-    sha256_aarch64 = "sha256-XzKloS00dFKTd4ATWkTIhm9eG/OzR/Sim6MboNZWPu8=";
-    openSha256 = "sha256-Lfz71QWKM6x/jD2B22SWpUi7/og30HRlXg1kL3EWzEw=";
-    settingsSha256 = "sha256-mXnf3jyvznfB3OfKd657rxv0rYHQb/dX/Riw/+N9EKU=";
-    persistencedSha256 = "sha256-Z/6IvEEa/XfZ5F5qoSIPvXJLGtscYVqjFxHZaN/M2Ts=";
+    version = "595.84";
+    sha256_64bit = "sha256-mcQE5SExvye8ptoCaNzOPr7cenOrF0BxqZXPGmxeugY=";
+    sha256_aarch64 = "sha256-GloNdDFfmXFVu4FAlNNk2qzqLOuw2N5CKatKkcSrQxk=";
+    openSha256 = "sha256-pEmA2tUcOKwUPKy6N0QvS49Pdut4/7Phs/JhjdyBcNY=";
+    settingsSha256 = "sha256-QrnBM+sdWO4GanO62rxpHmRrjYkYpl5RD6fIiHq4C4A=";
+    persistencedSha256 = "sha256-50xYdgx7EEThbaMp4QS8GADbxj0mhBXh8QQN0tWMwRg=";
   };
 
   hardware.graphics = {
@@ -156,7 +156,7 @@ in
       enable = true;
       enableOffloadCmd = true;
     };
-    
+
     nvidiaBusId = "PCI:1:0:0";
     amdgpuBusId = "PCI:5:0:0";
   };
@@ -194,7 +194,7 @@ in
     protonup-ng
     brave
     btop
-    nvtopPackages.full  
+    nvtopPackages.full
     # bottles
     (writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
       [General]
@@ -227,7 +227,7 @@ in
     zellij
     pywal
     # powertop
-    lm_sensors 
+    lm_sensors
     killall
     devenv
     virt-v2v
@@ -283,6 +283,9 @@ in
     (pkgs.kdePackages.spectacle.override {
       tesseractLanguages = [ "eng" ];
     })
+    kdePackages.oxygen
+    kdePackages.oxygen-icons
+    kdePackages.oxygen-sounds
   ];
 
   programs.nix-ld.enable = true;
@@ -343,12 +346,12 @@ in
   boot.initrd.systemd.enable = true;
 
   boot = {
-    kernelModules = [ 
+    kernelModules = [
       # "legion-laptop"
       "ntsync"
       "kheaders"
     ];
-    
+
     kernelParams = [
       "zswap.enabled=1" # enables zswap
       "zswap.compressor=lz4" # compression algorithm
