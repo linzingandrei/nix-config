@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.username = "andrei";
@@ -20,31 +20,33 @@
     poppler-utils
     zathura
     cemu
+    nil
+    nixd
   ];
 
   programs.neovim = {
     enable = true;
 
     extraLuaConfig = ''
-	vim.pack.add {
-	    'https://github.com/nvim-treesitter/nvim-treesitter',
-	    'https://github.com/neovim/nvim-lspconfig',
-	    'https://github.com/stevearc/oil.nvim',
-	}
+      	vim.pack.add {
+      	    'https://github.com/nvim-treesitter/nvim-treesitter',
+      	    'https://github.com/neovim/nvim-lspconfig',
+      	    'https://github.com/stevearc/oil.nvim',
+      	}
 
-	vim.g.mapleader = ','
-	vim.opt.exrc = true
-	vim.opt.number = true
-	vim.opt.relativenumber = true
-	vim.opt.ignorecase = true
-	vim.opt.smartcase = true
-	vim.opt.colorcolumn = '80'
-	vim.opt.textwidth = 80
-	vim.opt.completeopt = 'menu,menuone,fuzzy,noinsert'
-	vim.opt.swapfile = false
-	vim.opt.confirm = true
-	vim.opt.linebreak = true
-	vim.opt.termguicolors = true
+      	vim.g.mapleader = ','
+      	vim.opt.exrc = true
+      	vim.opt.number = true
+      	vim.opt.relativenumber = true
+      	vim.opt.ignorecase = true
+      	vim.opt.smartcase = true
+      	vim.opt.colorcolumn = '80'
+      	vim.opt.textwidth = 80
+      	vim.opt.completeopt = 'menu,menuone,fuzzy,noinsert'
+      	vim.opt.swapfile = false
+      	vim.opt.confirm = true
+      	vim.opt.linebreak = true
+      	vim.opt.termguicolors = true
     '';
 
     extraPackages = with pkgs; [
@@ -77,7 +79,6 @@
   #     };
   #   };
   # };
-
 
   programs.kitty = {
     enable = true;
@@ -112,7 +113,10 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "direnv" ];
+      plugins = [
+        "git"
+        "direnv"
+      ];
       theme = "flazz";
     };
 
