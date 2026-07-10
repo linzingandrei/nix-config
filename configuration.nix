@@ -25,7 +25,7 @@ in
 
       ./network-stuff.nix
 
-      ./hyprland-stuff.nix
+      # ./hyprland-stuff.nix
     ];
 
   home-manager.useUserPackages = true;
