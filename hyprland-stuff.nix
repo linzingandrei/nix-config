@@ -1,42 +1,68 @@
 { config, lib, pkgs, ... }:
 
 {
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
 
+  # Optional, hint electron apps to use wayland:
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd \"uwsm start hyprland.desktop\"";
+        user = "andrei";
+      };
+      default_session = initial_session;
+    };
+  };
+
+
+  environment.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "qt6ct";
+  };
 
   environment.systemPackages = with pkgs; [
-    pkgs.cmake
-    pkgs.gnumake
-    pkgs.gcc
+    grim
+    swappy
+    slurp
 
-    pkg-config
+    kdePackages.dolphin
 
-    foot
-    quickshell
-    sox
-    ffmpeg
-    hypridle
+    hyprlauncher
     hyprlock
-    nerd-fonts.martian-mono
+    hyprpaper
 
-    pkgs.hyprcursor
-    pkgs.hyprland
-    pkgs.hyprgraphics
-    pkgs.libdrm
-    pkgs.pixman
-    pkgs.pango
-    pkgs.aquamarine
-    pkgs.hyprlang
-    pkgs.hyprutils
-    pkgs.libGL
-    pkgs.libxkbcommon
-    pkgs.libinput
-    pkgs.wayland
-    pkgs.wayland-protocols
-    pkgs.wayland-scanner
-    pkgs.wayland-utils
-    pkgs.xorg.xcbutilwm
-    pkgs.libxcb-errors
+    qt5.qtwayland
+    qt6.qtwayland
 
-    pkgs.luajit
+    kdePackages.qt6ct
+
+    waybar
+    networkmanager
+    pavucontrol
+    pulseaudio
+    blueman
+    peaclock
+    playerctl
+    swaynotificationcenter
   ];
+
+  xdg.portal = {
+    enable = true;
+
+    extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+        kdePackages.xdg-desktop-portal-kde
+        xdg-desktop-portal-gtk
+    ];
+
+    config = {
+        common.default = [ "hyprland" "gtk" ];
+        hyprland."org.freedesktop.impl.portal.FileChooser" = [ "kde" ];
+    };
+  };
 }

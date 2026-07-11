@@ -9,9 +9,9 @@
   #   dumpcap.enable = true;
   # };
 
-  services.opensnitch.enable = true;
+  # services.opensnitch.enable = true;
 
-  home-manager.users.andrei = {
-    services.opensnitch-ui.enable = true;
-  };
+  # home-manager.users.andrei = {
+  #  services.opensnitch-ui.enable = true;
+  # };
 }

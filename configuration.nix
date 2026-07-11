@@ -23,9 +23,9 @@ in
       ./vm.nix
       ./power-management.nix
 
-      ./network-stuff.nix
+      # ./network-stuff.nix
 
-      # ./hyprland-stuff.nix
+      ./hyprland-stuff.nix
     ];
 
   home-manager.useUserPackages = true;
@@ -90,18 +90,7 @@ in
   #  HandleLidSwitchDocked = "lock";
   #};
 
-  # services.udisks2.enable = true;
-
-  # services.greetd = {
-  #   enable = true;
-   # settings = rec {
-   #   initial_session = {
-   #     command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session";
-   #     user = "andrei";
-   #   };
-   #   default_session = initial_session;
-   # };
-  #};
+  services.udisks2.enable = true;
 
   # environment.loginShellInit = ''
   #   if uwsm check may-start; then
@@ -191,17 +180,17 @@ in
   # };
 
   environment.systemPackages = with pkgs; [
-
+    obs-studio
     mangohud
     protonup-ng
     brave
     btop
     nvtopPackages.full
     # bottles
-    (writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
-      [General]
-      background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/contents/images/2560x1600.jpg
-    '')
+    # (writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+    #   [General]
+    #   background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/contents/images/2560x1600.jpg
+    # '')
     # lutris
     # lenovo-legion
     # linuxKernel.packages.linux_6_19.lenovo-legion-module
@@ -387,8 +376,8 @@ in
   programs.gamemode.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
