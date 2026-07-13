@@ -25,6 +25,11 @@
     QT_QPA_PLATFORMTHEME = "qt6ct";
   };
 
+  services.logind.settings.Login = {
+    HandlePowerKey = "ignore";
+    HandlePowerKeyLongPress = "poweroff";
+  };
+
   environment.systemPackages = with pkgs; [
     grim
     swappy
@@ -35,11 +40,13 @@
     hyprlauncher
     hyprlock
     hyprpaper
+    hypridle
 
     qt5.qtwayland
     qt6.qtwayland
 
     kdePackages.qt6ct
+    kdePackages.okular
 
     waybar
     networkmanager
@@ -49,6 +56,8 @@
     peaclock
     playerctl
     swaynotificationcenter
+
+    quickshell
   ];
 
   xdg.portal = {
