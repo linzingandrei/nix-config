@@ -277,6 +277,8 @@ in
     kdePackages.oxygen
     kdePackages.oxygen-icons
     kdePackages.oxygen-sounds
+    lutris
+    kdePackages.okular
   ];
 
   programs.nix-ld.enable = true;

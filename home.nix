@@ -123,6 +123,10 @@ gtk = {
     "$HOME/.emacs.d/bin"
   ];
 
+  home.sessionVariables = {
+    QML_IMPORT_PATH = "${pkgs.qt6Packages.qt5compat}/lib/qt-6/qml";
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;

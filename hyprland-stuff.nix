@@ -1,9 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
+
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   };
 
   # Optional, hint electron apps to use wayland:
@@ -58,13 +60,18 @@
     swaynotificationcenter
 
     quickshell
+    qt6Packages.qt5compat
+    qt5.qtgraphicaleffects
+    kdePackages.qtbase
+    kdePackages.qtdeclarative
+
+    pavucontrol
   ];
 
   xdg.portal = {
     enable = true;
 
     extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
         kdePackages.xdg-desktop-portal-kde
         xdg-desktop-portal-gtk
     ];
