@@ -23,6 +23,8 @@
     nil
     nixd
     kicad
+
+    awakened-poe-trade
   ];
 
   programs.neovim = {

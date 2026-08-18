@@ -66,6 +66,9 @@
     kdePackages.qtdeclarative
 
     pavucontrol
+
+    cliphist
+    wl-clip-persist
   ];
 
   xdg.portal = {

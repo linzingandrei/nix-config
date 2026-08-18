@@ -26,6 +26,8 @@ in
       # ./network-stuff.nix
 
       ./hyprland-stuff.nix
+
+      ./poe-logout.nix
     ];
 
   home-manager.useUserPackages = true;
