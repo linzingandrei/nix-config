@@ -69,6 +69,8 @@
 
     cliphist
     wl-clip-persist
+
+    xclip
   ];
 
   xdg.portal = {
