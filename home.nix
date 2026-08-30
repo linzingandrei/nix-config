@@ -14,7 +14,7 @@
     fd
     p7zip
     ntfs3g
-    libreoffice-qt6-fresh
+    libreoffice-qt-stable
     usbutils
     obsidian
     poppler-utils
@@ -27,7 +27,7 @@
     awakened-poe-trade
   ];
 
-  programs.neovim = {
+  programs.neovim.initLua = {
     enable = true;
 
     extraLuaConfig = ''
@@ -59,6 +59,7 @@
   };
 
 home.pointerCursor = {
+  enable = true;
   gtk.enable = true;
   # x11.enable = true;
   package = pkgs.bibata-cursors;
