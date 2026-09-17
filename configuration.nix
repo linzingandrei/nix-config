@@ -166,7 +166,7 @@ in
  #   ];
  # };
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_latest;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_2;
 
 # # programs.hyprland = {
 ##  enable = true;
