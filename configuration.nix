@@ -227,6 +227,7 @@ in
     bibata-cursors
     direnv
     emacs
+    neovim
     git
     ripgrep
     coreutils
