@@ -166,7 +166,7 @@ in
  #   ];
  # };
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxKernel.kernels.linux_latest;
 
 # # programs.hyprland = {
 ##  enable = true;
