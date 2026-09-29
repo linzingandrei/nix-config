@@ -28,6 +28,8 @@ in
       ./hyprland-stuff.nix
 
       ./poe-logout.nix
+
+      inputs.noctalia.nixosModules.default
     ];
 
   home-manager.useUserPackages = true;
@@ -133,6 +135,12 @@ in
     persistencedSha256 = "sha256-aXmD2VY1RLlgAnlHhOUMWzvMyhI6JTClcFLm4imF/mA=";
   };
 
+  programs.noctalia = {
+    enable = true;
+
+    recommendedServices.enable = true;
+  };
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -182,6 +190,7 @@ in
   # };
 
   environment.systemPackages = with pkgs; [
+
     obs-studio
     mangohud
     protonup-ng
@@ -285,6 +294,10 @@ in
   ];
 
   programs.nix-ld.enable = true;
+
+  services.tailscale = {
+    enable = true;
+  };
 
   #programs.niri = {
   #  enable = true;
@@ -469,7 +482,7 @@ in
   #};
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [ 25565 ];
   # networking.firewall.allowedUDPPorts = [ 8080 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

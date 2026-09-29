@@ -27,6 +27,29 @@
     awakened-poe-trade
   ];
 
+  programs.keepassxc = {
+    enable = true;
+    settings = {
+      FdoSecrets = {
+        Enabled = true;
+        ConfirmAccessItem = false;
+      };
+
+      General= {
+        MinimizeAfterUnlock = true;
+      };
+
+      GUI = {
+        ApplicationTheme = "dark";
+        HidePasswords = true;
+        MinimizeToTray = true;
+        MinimizeOnStartup = true;
+        MinimizeOnClose = true;
+        ShowTrayIcon = true;
+      };
+    };
+  };
+
   programs.neovim.initLua = {
     enable = true;
 

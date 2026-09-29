@@ -441,6 +441,26 @@
         "type": "github"
       }
     },
+    "noctalia": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789611680,
+        "narHash": "sha256-obiNV+juEjUYDDusgYQukjLyoVsJJPmYppmjvIEfkSg=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia",
+        "rev": "8c52cb71b5bcafbf67bfb8e659f1fc45f882a008",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -468,7 +488,8 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "lsfg-vk-flake": "lsfg-vk-flake",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "noctalia": "noctalia"
       }
     },
     "systems": {
