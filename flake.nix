@@ -13,9 +13,14 @@
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, self, lsfg-vk-flake, ... }@inputs:
+  outputs = { nixpkgs, self, lsfg-vk-flake, stylix, ... }@inputs:
   {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -27,6 +32,8 @@
         ./configuration.nix
 
         lsfg-vk-flake.nixosModules.default
+
+        stylix.nixosModules.stylix
       ];
     };
   };

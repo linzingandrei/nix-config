@@ -30,6 +30,8 @@ in
       ./poe-logout.nix
 
       inputs.noctalia.nixosModules.default
+
+      ./stylix-config.nix
     ];
 
   home-manager.useUserPackages = true;
