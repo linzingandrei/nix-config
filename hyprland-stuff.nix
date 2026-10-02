@@ -23,9 +23,9 @@
   };
 
 
-  environment.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt6ct";
-  };
+  # environment.sessionVariables = {
+  #   QT_QPA_PLATFORMTHEME = "qt6ct";
+  # };
 
   services.logind.settings.Login = {
     HandlePowerKey = "ignore";
